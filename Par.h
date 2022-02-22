@@ -15,6 +15,7 @@ public:
 	~Par();
 	T* getDato();
 	void setDato(T* dato);
+	void setSiguiente(Par<T>* siguiente);
 	Par<T>* getSiguiente();
 };
 
@@ -58,3 +59,7 @@ Par<T>* Par<T>::getSiguiente()
 }
 
 
+ template<class T>
+ void Par<T>::setSiguiente(Par<T>* siguiente) {
+	 this->siguiente = siguiente;
+ }

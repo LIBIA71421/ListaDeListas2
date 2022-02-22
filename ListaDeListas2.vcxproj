@@ -139,18 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Cabecera.cpp" />
-    <ClCompile Include="Lista7.cpp" />
-    <ClCompile Include="ListaDeLista.cpp" />
     <ClCompile Include="ListaDeListas2.cpp" />
     <ClCompile Include="ListaVaciaException.cpp" />
-    <ClCompile Include="Par.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cabecera.h" />
     <ClInclude Include="Lista7.h" />
-    <ClInclude Include="ListaDeLista.h" />
-    <ClInclude Include="ListaDeListas2.h" />
     <ClInclude Include="ListaVaciaException.h" />
     <ClInclude Include="Par.h" />
   </ItemGroup>
