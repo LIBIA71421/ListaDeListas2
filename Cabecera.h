@@ -10,7 +10,7 @@ class Cabecera
 {
 private:
 	Cabecera* siguiente;
-	Lista8<T>* lista;
+	Lista7<T>* lista;
 	T* nombreLista;
 public:
 	Cabecera(T* nombre);
@@ -21,14 +21,15 @@ public:
 	void setLista(Cabecera<T>* lista);
 	Cabecera<T>* getSiguiente();
 	void crearSiguiente(Cabecera<T>* lista);
-	void aumentarEnLista(T* dato);
+	void insertarPrincipioCab(T* dato);
+	void eliminarEstudianteDeMateriaCab(T* dato);
 };
 
 template<class T>
 Cabecera<T>::Cabecera(T* nombre)
 {
 	this->nombreLista = nombre;
-	lista = new Lista8<T>();
+	lista = new Lista7<T>();
 	siguiente = NULL;
 }
 
@@ -78,7 +79,12 @@ void Cabecera<T>::crearSiguiente(Cabecera<T>* nuevoSig)
 }
 
 template<class T>
-void Cabecera<T>::aumentarEnLista(T* dato)
+void Cabecera<T>::insertarPrincipioCab(T* dato)
 {
-	lista->addBack(dato);
+	lista->insertarPrincipio(dato);
+}
+
+template<class T>
+void Cabecera<T>::eliminarEstudianteDeMateriaCab(T* dato) {
+	lista->eliminarElemDado(dato);
 }

@@ -1,5 +1,7 @@
 #include <iostream>
 using namespace std;
+#include "ListadeListas2_7.h"
+#include "Cabecera.h"
 #include "Lista7.h"
 
 static void mostrarCadena(string * cadena) {
@@ -11,6 +13,47 @@ static int* convertirAEntero(string linea) {
 static void mostrarEntero(int* entero) {
     cout << *entero << endl;
 }
+
+int main() {
+    ListadeListas2_7<string> materias;
+    Lista7<string> lista;
+    int opcion = 0;
+    string mater, alumno;
+    cout << endl;
+    cout << "1 -> Ingresar estudiante al principio" << endl;
+    cout << "2 -> Mostrar lista de listas" << endl;
+    cout << "3 -> Eliminar estudiante dado de lista dada" << endl;
+    cout << "4 -> Buscar estudiante en lista de listas" << endl;
+    cout << "0 -> Salir" << endl; 
+    
+    do {
+        switch (opcion)
+        {
+            1;
+                cout << endl << "MATERIA ? -> "; cin >> mater;
+                cout << endl << "ESTUDIANTE ? -> "; cin >> alumno;
+                materias.insertarPrincipioLL(new string("MATEMATICAS"), new string("ELIAS"));
+            break;
+            2;
+                materias.mostrar(mostrarCadena);
+            break;
+            3;
+                materias.insertarPrincipioLL(new string("MATEMATICAS"), new string("ELIAS"));
+            break;
+            4;
+                materias.insertarPrincipioLL(new string("MATEMATICAS"), new string("ELIAS"));
+            break;
+        }
+
+        
+
+    } while (opcion != 0);
+    //lista.insertarPrincipio(new string("vaca"));
+    //lista.mostrar(mostrarCadena);
+
+    return 0;
+}
+/*
 int main() {
     Lista7<string> lista;
     lista.insertarPrincipio(new string("vaca"));
@@ -26,7 +69,7 @@ int main() {
     cout << endl;
 
     return 0;
-}
+}*/
 /*
 int main()
 {

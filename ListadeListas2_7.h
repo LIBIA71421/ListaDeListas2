@@ -11,13 +11,15 @@ template<class T>
 class ListadeListas2_7
 {
 private:
-	Cabecera<T>* primer; //cabecera vec[60];
-	int Primer;
-	int Ultimo;
+	Cabecera<T>* vec[60]; //cabecera vec[60];
+	Cabecera<T>* primer; // int primer
+	int ultimo;
 public:
 	ListadeListas2_7();
 	~ListadeListas2_7();
-	void addDatoEnLista(T* nombreLista, T* dato);
+	void insertarPrincipioLL(T* nombreLista, T* dato);
+	void insertarPrincipio(T* nombreLista, T* dato);
+	void eliminarElementoDado(T* nombreLista, T* dato);
 	void mostrar(void (*mostrarT)(T*));
 };
 
@@ -34,12 +36,12 @@ ListadeListas2_7<T>::~ListadeListas2_7()
 }
 
 template<class T>
-void ListadeListas2_7<T>::addDatoEnLista(T* nombreLista, T* dato)
+void ListadeListas2_7<T>::insertarPrincipioLL(T* nombreLista, T* dato)
 {
-	if (primer == NULL)
+	if (primer == NULL )
 	{
 		primer = new Cabecera<T>(nombreLista);
-		primer->aumentarEnLista(dato);
+		primer->insertarPrincipioCab(dato);
 	}
 	else
 	{
@@ -51,7 +53,35 @@ void ListadeListas2_7<T>::addDatoEnLista(T* nombreLista, T* dato)
 		if (aux == NULL)
 		{
 			Cabecera<T>* nuevaLista = new Cabecera<T>(nombreLista);
-			nuevaLista->aumentarEnLista(dato);
+			nuevaLista->insertarPrincipioCab(dato);
+			nuevaLista->crearSiguiente(primer);
+			primer = nuevaLista;
+		}
+		else
+		{
+			aux->insertarPrincipioCab(dato);
+		}
+	}
+}
+template<class T>
+void ListadeListas2_7<T>::insertarPrincipio(T* nombreLista, T* dato)
+{
+	if (primer == -1 && ultimo == -1)
+	{
+		primer = new Cabecera<T>(nombreLista);
+		primer->insertarPrincipioCab(dato);
+	}
+	else
+	{
+		Cabecera<T>* aux = primer;
+		while (aux != NULL && (aux->getNombreLista() != nombreLista))
+		{
+			aux = aux->getSiguiente();
+		}
+		if (aux == NULL)
+		{
+			Cabecera<T>* nuevaLista = new Cabecera<T>(nombreLista);
+			nuevaLista->insertarPrincipioCab(dato);
 			nuevaLista->crearSiguiente(primer);
 			primer = nuevaLista;
 		}
@@ -61,6 +91,36 @@ void ListadeListas2_7<T>::addDatoEnLista(T* nombreLista, T* dato)
 		}
 	}
 }
+
+template<class T>
+void ListadeListas2_7<T>::eliminarElementoDado(T* nombreLista, T* dato)
+{
+	if (primer == NULL)
+	{
+		primer = new Cabecera<T>(nombreLista);
+		primer->eliminarEstudianteDeMateriaCab(dato);
+	}
+	else
+	{
+		Cabecera<T>* aux = primer;
+		while (aux != NULL && (aux->getNombreLista() != nombreLista))
+		{
+			aux = aux->getSiguiente();
+		}
+		if (aux == NULL)
+		{
+			Cabecera<T>* nuevaLista = new Cabecera<T>(nombreLista);
+			nuevaLista->eliminarEstudianteDeMateriaCab(dato);
+			nuevaLista->crearSiguiente(primer);
+			primer = nuevaLista;
+		}
+		else
+		{
+			aux->eliminarEstudianteDeMateriaCab(dato);
+		}
+	}
+}
+
 /*
 ListaLista::InsertarPrincipioLL (LL, el, materia)
 
@@ -104,11 +164,11 @@ void ListadeListas2_7<T>::mostrar(void (*mostrarT)(T*))
 		Cabecera<T>* recorrerLista = primer;
 		while (recorrerLista != NULL)
 		{
-			cout << "materia:" << endl;
+			cout << endl << "materia:" << endl;
 			(*mostrarT)(recorrerLista->getNombreLista());
 			Lista7<T>* auxLista = recorrerLista->getLista();
 			Par<T>* aux = auxLista->getPrimer();
-			cout << "estudiantes:" << endl;
+			cout << endl << "estudiantes:" << endl;
 			while (aux != NULL)
 			{
 				(*mostrarT)(aux->getDato());
